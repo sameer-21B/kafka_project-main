@@ -1,0 +1,15 @@
+name : Sample yaml file to test actions
+
+on:
+  push:
+    branches:
+      main #Change this to test in case if you want to disable this workflow temporarily.
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name : Sample script print
+        run: |
+          echo "actions is running fine."

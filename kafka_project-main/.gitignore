@@ -1,0 +1,9 @@
+kafka_env
+__pycache__
+Logs
+rds_conn_parameters.txt
+test_kafka.txt
+aws_credentials_s3.txt
+packages
+*.log
+*.zip
