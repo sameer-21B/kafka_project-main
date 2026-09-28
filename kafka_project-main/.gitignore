@@ -7,3 +7,6 @@ aws_credentials_s3.txt
 packages
 *.log
 *.zip
+package/
+package_lambda/
+lambda_env
