@@ -3,7 +3,8 @@ use_database_query = \
 use {db_name};'''
 
 create_table_query =  \
-'''create table {table_name} (
+'''
+create table {db_name}.{table_name} (
 	Idx integer,
 	Car_name varchar(50),
 	Brand varchar(50),

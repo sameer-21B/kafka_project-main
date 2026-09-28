@@ -27,12 +27,14 @@ class Dbutils:
             print("Exception {} Occured while trying to establish Connection.".format(e))
     
     def create_table(self):
-        query = create_table_query.format(table_name=self.table_name)
+        query = create_table_query.format(table_name=self.table_name, db_name="sales_db")
         print("query is : \n{}".format(query))
         self.cursor.execute(query)
 
     def use_database(self,db_name):
-        query = use_database_query.format(db_name)
+        print("entered use_database function")
+        print(f"db_name: {db_name}")
+        query = use_database_query.format(db_name = db_name)
         print("use database query is : \n{}".format(query))
         self.cursor.execute(query)
 

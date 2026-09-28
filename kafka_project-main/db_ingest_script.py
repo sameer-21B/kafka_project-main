@@ -13,9 +13,9 @@ import sys,os
 
 logger=logging.getLogger(__name__)
 logfile_nm=(str(__file__)[:-3]+'_'+str(datetime.now().strftime('%Y%m%d-%H%M%S'))).split('/')[-1]
-print("Logfile_nm is :",logfile_nm)
+print("Logfile_nm is :",logfile_nm.split('\\')[-1])
 
-logging.basicConfig(filename=f'./Logs/{logfile_nm}.log',
+logging.basicConfig(filename=f'./Logs/{logfile_nm.split('\\')[-1]}.log',
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     filemode='w')
 
@@ -28,7 +28,7 @@ def main_function(a=0,b=0):
     logger.info(f"Name of Log File : {logfile_nm}")
 
     print("Accessing Raw Data")
-    car_data=pd.read_csv('s3://input-data-car-sales/cardekho_dataset.csv',index_col=0)
+    car_data=pd.read_csv('s3://input-data-car-sales-243345108289/cardekho_dataset.csv',index_col=0)
     car_data['Idx']=range(1,len(car_data)+1)
     car_data=car_data[['Idx']+list(car_data.columns)[:-1]]
     logger.info("Dataframe has been created")
