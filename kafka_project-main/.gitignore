@@ -10,3 +10,4 @@ packages
 package/
 package_lambda/
 lambda_env
+MSK_confluent_env
