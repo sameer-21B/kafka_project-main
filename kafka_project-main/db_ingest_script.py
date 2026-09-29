@@ -15,7 +15,7 @@ logger=logging.getLogger(__name__)
 logfile_nm=(str(__file__)[:-3]+'_'+str(datetime.now().strftime('%Y%m%d-%H%M%S'))).split('/')[-1]
 print("Logfile_nm is :",logfile_nm.split('\\')[-1])
 
-logging.basicConfig(filename=f'./Logs/{logfile_nm.split('\\')[-1]}.log',
+logging.basicConfig(filename=f'./db_ingest_logs/{logfile_nm.split('\\')[-1]}.log',
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     filemode='w')
 

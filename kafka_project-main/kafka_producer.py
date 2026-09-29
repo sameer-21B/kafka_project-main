@@ -18,7 +18,7 @@ from confluent_kafka.schema_registry.json_schema import JSONSerializer
 
 logger=logging.getLogger(__file__)
 logfile_nm=str(__file__)[:-3]+'_'+str(datetime.now().strftime('%Y%m%d-%H%M%S'))
-logging.basicConfig(filename=f'{logfile_nm}.log',
+logging.basicConfig(filename=f'./db_ingest_logs/{logfile_nm.split("/")[-1]}.log',
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     filemode='w')
 
@@ -58,7 +58,7 @@ db_obj=db()
 db_obj.db_connect()
 
 def get_car_instance():
-    query="select max(Record_ld_dt) as max_record_ld_dts from kafka_test.cardekho_sales_dtl"
+    query="select max(Record_ld_dt) as max_record_ld_dts from sales_db.cardekho_sales_dtl"
     max_date=db_obj.run_query(query)['max_record_ld_dts'].values[0]
     global prev_date
     '''if max_date==prev_date:
@@ -69,7 +69,7 @@ def get_car_instance():
         logger.info("No New data found")
         logger.info(f"Trying to fetch data for {count + 1} time.")
         time.sleep(1)
-        query="select max(Record_ld_dt) as max_record_ld_dts from kafka_test.cardekho_sales_dtl"
+        query="select max(Record_ld_dt) as max_record_ld_dts from sales_db.cardekho_sales_dtl"
         max_date=db_obj.run_query(query)['max_record_ld_dts'].values[0]
         count=count+1
     if count>10:
@@ -77,7 +77,7 @@ def get_car_instance():
         yield list([False])
     
     logger.info("New records are present in the table")
-    query=f"select * from kafka_test.cardekho_sales_dtl where Record_ld_dt='{max_date}'"
+    query=f"select * from sales_db.cardekho_sales_dtl where Record_ld_dt='{max_date}'"
     df=db_obj.run_query(query)
     df['Record_ld_dt']=df['Record_ld_dt'].astype(str)
     prev_date=max_date
