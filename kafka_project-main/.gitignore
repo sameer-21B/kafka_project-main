@@ -11,3 +11,4 @@ package/
 package_lambda/
 lambda_env
 MSK_confluent_env
+db_ingest_logs
