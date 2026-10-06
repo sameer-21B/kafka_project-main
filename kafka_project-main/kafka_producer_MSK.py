@@ -91,7 +91,7 @@ def get_msk_producer_config():
     """
     return {
         # Replace with your MSK Bootstrap Brokers (IAM Endpoint, Port 9098)
-        'bootstrap.servers': 'boot-map86xor.c2.kafka-serverless.ap-south-1.amazonaws.com:9098',
+        'bootstrap.servers': 'boot-ecuf1wvn.c2.kafka-serverless.ap-south-1.amazonaws.com:9098',
         'security.protocol': 'SASL_SSL',
         'sasl.mechanism': 'OAUTHBEARER',
         'oauth_cb': oauth_cb
